@@ -1,0 +1,115 @@
+﻿@page
+@model MealPlans.Pages.LoginModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="utf-8" />
+    <title>Login - MealPlans</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="~/w3crm.dexignzone.com/xhtml/css/login.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  
+</head>
+<body>
+    <div class="container-fluid auth-container">
+        <div class="row h-100">
+            <div class="col-lg-6 d-none d-lg-block auth-left">
+                <div class="overlay-content h-100 d-flex flex-column justify-content-center align-items-start">
+                    <h1>Welcome to MealPlans</h1>
+                    <p class="lead">Your personal assistant for smart and healthy meal planning.</p>
+                </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center justify-content-center bg-white">
+                <div class="auth-form w-100" style="max-width: 400px;">
+                    <h3 class="mb-4 text-center">Sign In</h3>
+
+                    @if (!string.IsNullOrEmpty(Model.LogoutMessage))
+                    {
+                        <div id="logout-message" class="alert alert-info text-center">
+                            @Model.LogoutMessage
+                        </div>
+                    }
+
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label">Email</label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3 position-relative">
+                            <label asp-for="Password" class="form-label">Password</label>
+                            <input asp-for="Password" class="form-control" type="password" id="dz-password" />
+                            <span class="show-pass">
+                                <i class="fa fa-eye-slash" id="togglePassword"></i>
+                            </span>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="rememberMe" />
+                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                        </div>
+
+                        <div class="d-grid mb-4">
+                            <button type="submit" class="btn btn-primary">Sign In</button>
+                        </div>
+
+                        <p class="text-center">
+                            New here? <a asp-page="/SignUp" class="text-decoration-none text-primary">Register now</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            const togglePassword = document.getElementById('togglePassword');
+            const passwordInput = document.getElementById('dz-password');
+
+            if (togglePassword && passwordInput) {
+                togglePassword.addEventListener('click', function () {
+                    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                    passwordInput.setAttribute('type', type);
+                    this.classList.toggle('fa-eye');
+                    this.classList.toggle('fa-eye-slash');
+                });
+            }
+
+            // Fade-out logout message on click anywhere
+            const logoutMessage = document.getElementById('logout-message');
+            if (logoutMessage) {
+                document.addEventListener('click', function handler() {
+                    logoutMessage.classList.add('fade-out');
+                    setTimeout(() => logoutMessage.style.display = 'none', 500);
+                    document.removeEventListener('click', handler); // remove after first run
+                });
+            }
+        })();
+    </script>
+    <script>
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('dz-password');
+        togglePassword?.addEventListener('click', function () {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+    </script>
+   
+   
+
+</body>
+
+
+</html>

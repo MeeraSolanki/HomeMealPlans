@@ -1,0 +1,68 @@
+﻿@page
+@model MealPlans.Pages.Admin.MealPlan.CreateModel
+
+@{
+    ViewData["Title"] = "Create Meal Plan";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow rounded">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">Create New Meal Plan</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="TblMealPlan.UserId" class="form-label">User</label>
+                            <select asp-for="TblMealPlan.UserId" class="form-select" asp-items="ViewBag.UserId"></select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="TblMealPlan.MealId" class="form-label">Meal</label>
+                            <select asp-for="TblMealPlan.MealId" class="form-select" asp-items="ViewBag.MealId"></select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="TblMealPlan.FoodName" class="form-label">Food Name</label>
+                            <input asp-for="TblMealPlan.FoodName" class="form-control" />
+                            <span asp-validation-for="TblMealPlan.FoodName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="TblMealPlan.Date" class="form-label">Date</label>
+                            <input asp-for="TblMealPlan.Date" type="date" class="form-control" />
+                            <span asp-validation-for="TblMealPlan.Date" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="TblMealPlan.StatusId" class="form-label">Status</label>
+                            <select asp-for="TblMealPlan.StatusId" class="form-select" asp-items="ViewBag.StatusId"></select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="TblMealPlan.Notes" class="form-label">Notes</label>
+                            <textarea asp-for="TblMealPlan.Notes" class="form-control" rows="3"></textarea>
+                            <span asp-validation-for="TblMealPlan.Notes" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+                            <a asp-page="./Index" class="btn btn-secondary">Back to List</a>
+                            <button type="submit" class="btn btn-success">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

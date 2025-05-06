@@ -1,0 +1,55 @@
+﻿@page
+@model MealPlans.Pages.Admin.User.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow rounded">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Edit Meal Plan</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                        <input type="hidden" asp-for="TblUser.Id" />
+
+                        <div class="mb-3">
+                            <label asp-for="TblUser.Username" class="control-label"></label>
+                            <input asp-for="TblUser.Username" class="form-control" />
+                            <span asp-validation-for="TblUser.Username" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="TblUser.Email" class="control-label"></label>
+                            <input asp-for="TblUser.Email" class="form-control" />
+                            <span asp-validation-for="TblUser.Email" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="TblUser.PasswordHash" class="control-label"></label>
+                            <input asp-for="TblUser.PasswordHash" class="form-control" />
+                            <span asp-validation-for="TblUser.PasswordHash" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="TblUser.CreatedAt" class="control-label"></label>
+                            <input asp-for="TblUser.CreatedAt" class="form-control" />
+                            <span asp-validation-for="TblUser.CreatedAt" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+                            <a asp-page="./Index" class="btn btn-secondary">Back to List</a>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+          
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

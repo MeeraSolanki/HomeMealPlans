@@ -1,0 +1,51 @@
+﻿@page
+@model MealPlans.Pages.Admin.User.DetailsModel
+
+@{
+    ViewData["Title"] = "User Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="card shadow rounded">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">User Details</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-4 text-muted">
+                    @Html.DisplayNameFor(model => model.TblUser.Username)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.TblUser.Username)
+                </dd>
+
+                <dt class="col-sm-4 text-muted">
+                    @Html.DisplayNameFor(model => model.TblUser.Email)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.TblUser.Email)
+                </dd>
+
+                <dt class="col-sm-4 text-muted">
+                    @Html.DisplayNameFor(model => model.TblUser.PasswordHash)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.TblUser.PasswordHash)
+                </dd>
+
+                <dt class="col-sm-4 text-muted">
+                    @Html.DisplayNameFor(model => model.TblUser.CreatedAt)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.TblUser.CreatedAt)
+                </dd>
+            </dl>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a asp-page="./Index" class="btn btn-outline-secondary">Back to List</a>
+                <a asp-page="./Edit" asp-route-id="@Model.TblUser.Id" class="btn btn-primary">Edit</a>
+            </div>
+        </div>
+    </div>
+</div>

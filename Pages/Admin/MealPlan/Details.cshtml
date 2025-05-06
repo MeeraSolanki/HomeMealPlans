@@ -1,0 +1,49 @@
+﻿@page
+@model MealPlans.Pages.Admin.MealPlan.DetailsModel
+
+@{
+    ViewData["Title"] = "Meal Plan Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="container pt-5">
+    <div class="card shadow-sm rounded-3">
+        <div class="card-header bg-white border-bottom">
+            <h4 class="mb-0 text-primary">Meal Plan Details</h4>
+        </div>
+        <div class="card-body ">
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Food Name</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.TblMealPlan.FoodName)</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Date</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.TblMealPlan.Date)</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Day of Week</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.TblMealPlan.DayOfWeek)</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Notes</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.TblMealPlan.Notes)</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Meal</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.TblMealPlan.Meal.MealName)</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Status</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.TblMealPlan.Status.StatusName)</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 fw-bold">User</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.TblMealPlan.User.Username)</div>
+            </div>
+        </div>
+        <div class="card-footer text-end bg-white">
+            <a asp-page="./Edit" asp-route-id="@Model.TblMealPlan.Id" class="btn btn-warning me-2">Edit</a>
+            <a href="javascript:history.back()" class="btn btn-outline-secondary">Back to List</a>
+        </div>
+    </div>
+</div>

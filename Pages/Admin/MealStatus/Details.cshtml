@@ -1,0 +1,38 @@
+﻿@page
+@model MealPlans.Pages.Admin.MealStatus.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>TblMealStatus</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TblMealStatus.StatusName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TblMealStatus.StatusName)
+        </dd>
+       @*  <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TblMealStatus.IsActive)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TblMealStatus.IsActive)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TblMealStatus.IsDeleted)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TblMealStatus.IsDeleted)
+        </dd> *@
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.TblMealStatus.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

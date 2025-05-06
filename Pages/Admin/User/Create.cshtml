@@ -1,0 +1,49 @@
+﻿@page
+@model MealPlans.Pages.Admin.User.CreateModel
+
+@{
+    ViewData["Title"] = "Create User";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="card shadow rounded">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Create New User</h4>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+                    <label asp-for="TblUser.Username" class="form-label"></label>
+                    <input asp-for="TblUser.Username" class="form-control" />
+                    <span asp-validation-for="TblUser.Username" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="TblUser.Email" class="form-label"></label>
+                    <input asp-for="TblUser.Email" class="form-control" />
+                    <span asp-validation-for="TblUser.Email" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="TblUser.PasswordHash" class="form-label"></label>
+                    <input asp-for="TblUser.PasswordHash" class="form-control" />
+                    <span asp-validation-for="TblUser.PasswordHash" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <a asp-page="Index" class="btn btn-outline-secondary">Back to List</a>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

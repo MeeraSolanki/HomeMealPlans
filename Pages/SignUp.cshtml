@@ -1,0 +1,88 @@
+﻿@page
+@model MealPlans.Pages.SignUpModel
+@{
+    ViewData["Title"] = "Sign Up";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="utf-8" />
+    <title>Sign Up - MealPlans</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="~/w3crm.dexignzone.com/xhtml/css/login.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body>
+    <div class="container-fluid auth-container">
+        <div class="row h-100">
+            <!-- Left Visual Section -->
+            <div class="col-lg-6 d-none d-lg-block auth-left">
+                <div class="overlay-content h-100 d-flex flex-column justify-content-center align-items-start">
+                    <h1>Join MealPlans</h1>
+                    <p class="lead">Plan your meals smartly and stay healthy with ease.</p>
+                </div>
+            </div>
+            <!-- Right Form Section -->
+            <div class="col-lg-6 d-flex align-items-center justify-content-center bg-white">
+                <div class="auth-form w-100" style="max-width: 400px;">
+                    <h3 class="mb-4 text-center">Sign Up</h3>
+
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="TblUser.Username" class="form-label">Username</label>
+                            <input asp-for="TblUser.Username" class="form-control" />
+                            <span asp-validation-for="TblUser.Username" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="TblUser.Email" class="form-label">Email</label>
+                            <input asp-for="TblUser.Email" class="form-control" />
+                            <span asp-validation-for="TblUser.Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3 position-relative">
+                            <label asp-for="TblUser.PasswordHash" class="form-label">Password</label>
+                            <input asp-for="TblUser.PasswordHash" class="form-control" type="password" id="dz-password" />
+                            <span class="show-pass">
+                                <i class="fa fa-eye-slash" id="togglePassword"></i>
+                            </span>
+                            <span asp-validation-for="TblUser.PasswordHash" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-check mb-3">
+                            <input type="checkbox" class="form-check-input" id="termsCheck" required />
+                            <label class="form-check-label" for="termsCheck">I agree to the terms & conditions</label>
+                        </div>
+
+                        <div class="d-grid mb-4">
+                            <button type="submit" class="btn btn-primary">Sign Up</button>
+                        </div>
+
+                        <p class="text-center">
+                            Already have an account?
+                            <a asp-page="/Login" class="text-decoration-none text-primary">Sign in</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('dz-password');
+
+        togglePassword?.addEventListener('click', function () {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+    </script>
+</body>
+</html>
